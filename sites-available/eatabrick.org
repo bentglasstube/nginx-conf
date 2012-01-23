@@ -1,0 +1,11 @@
+server {
+  listen 80 default;
+
+  server_name eatabrick.org www.eatabrick.org;
+  access_log /var/log/nginx/eatabrick.org.access.log;
+  error_log /var/log/nginx/eatabrick.org.error.log;
+  
+  root /var/sites/eatabrick.org/htdocs/;
+  
+  index index.html;
+}

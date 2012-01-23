@@ -1,0 +1,25 @@
+#!/bin/bash
+
+host=$1
+
+if [ "x" == "x$host" ]; then
+  read -p 'Enter host name: ' host;
+fi
+
+if [ -e $host ]; then
+  echo "$host exists" >&2;
+  exit 1;
+fi
+
+echo "server {
+  listen 8080 default;
+  
+  server_name $host;
+  access_log /var/log/nginx/$host.access.log;
+  error_log /var/log/nginx/$host.error.log;
+
+  root /var/sites/$host/;
+
+  index index.html;
+}" > $host
+
