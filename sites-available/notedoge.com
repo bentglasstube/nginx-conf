@@ -15,4 +15,10 @@ server {
     fastcgi_param SCRIPT_FILENAME /var/sites/notedoge.com/www$fastcgi_script_name;
     include fastcgi_params;
   }
+
+  rewrite_log on;
+  if (!-e $request_filename) {
+    rewrite ^/(.+)$ /index.php?url=$1 last;
+    break;
+  }
 }
