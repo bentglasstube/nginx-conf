@@ -9,16 +9,24 @@ server {
 
   index index.php index.html;
 
-  location ~ \.php$ {
-    fastcgi_pass 127.0.0.1:9000;
-    fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME /var/sites/notedoge.com/www$fastcgi_script_name;
-    include fastcgi_params;
+  location /trivia {
+    if (!-e $request_filename) {
+      rewrite ^/trivia(.+)$ /trivia/app/webroot/$1 last;
+      break;
+    }
+  }
+  
+  location /trivia/app/webroot {
+    if (!-e $request_filename) {
+      rewrite ^/trivia/app/webroot/(.+)$ /trivia/app/webroot/index.php?url=$1 last;
+      break;
+    }
   }
 
-  rewrite_log on;
-  if (!-e $request_filename) {
-    rewrite ^/(.+)$ /index.php?url=$1 last;
-    break;
+  location ~ \.php$ {
+    fastcgi_pass localhost:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /var/www/notedoge.com/www$fastcgi_script_name;
+    include fastcgi_params;
   }
 }
