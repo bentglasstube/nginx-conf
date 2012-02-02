@@ -8,4 +8,6 @@ server {
   root /var/sites/eatabrick.org/htdocs/;
   
   index index.html;
+  
+  error_page 404 /404.html;
 }
