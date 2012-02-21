@@ -5,7 +5,7 @@ server {
   access_log /var/log/nginx/notedoge.com.access.log;
   error_log /var/log/nginx/notedoge.com.error.log;
 
-  root /var/sites/notedoge.com/www/;
+  root /srv/http/notedoge.com/www/;
 
   index index.php index.html;
 
@@ -24,9 +24,10 @@ server {
   }
 
   location ~ \.php$ {
-    fastcgi_pass localhost:9000;
+    try_files $uri =404;
+    fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
     fastcgi_index index.php;
-    fastcgi_param SCRIPT_FILENAME /var/www/notedoge.com/www$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME /srv/http/notedoge.com/www/$fastcgi_script_name;
     include fastcgi_params;
   }
 }

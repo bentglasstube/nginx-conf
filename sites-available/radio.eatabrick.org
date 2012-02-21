@@ -4,7 +4,7 @@ server {
   
   error_log /var/log/nginx/radio.eatabrick.org.error.log;
 
-  root /var/sites/radio.eatabrick.org/public;
+  root /srv/http/radio.eatabrick.org/public;
   location / {
     try_files $uri @proxy;
     expires max;

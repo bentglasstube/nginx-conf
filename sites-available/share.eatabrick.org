@@ -5,7 +5,7 @@ server {
   access_log /var/log/nginx/share.eatabrick.org.access.log;
   error_log /var/log/nginx/share.eatabrick.org.error.log;
 
-  root /var/sites/share.eatabrick.org/files/;
+  root /srv/http/share.eatabrick.org/files/;
 
   location / {
     autoindex on;

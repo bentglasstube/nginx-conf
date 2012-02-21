@@ -5,7 +5,7 @@ server {
   access_log /var/log/nginx/adventuremormon.com.access.log;
   error_log /var/log/nginx/adventuremormon.com.error.log;
 
-  root /var/sites/adventuremormon.com/;
+  root /srv/http/adventuremormon.com/;
 
   index index.html;
 }

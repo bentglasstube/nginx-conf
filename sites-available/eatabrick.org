@@ -5,7 +5,7 @@ server {
   access_log /var/log/nginx/eatabrick.org.access.log;
   error_log /var/log/nginx/eatabrick.org.error.log;
   
-  root /var/sites/eatabrick.org/htdocs/;
+  root /srv/http/eatabrick.org/htdocs/;
   
   index index.html;
   

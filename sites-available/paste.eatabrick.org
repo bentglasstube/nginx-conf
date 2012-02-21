@@ -4,7 +4,7 @@ server {
   
   error_log /var/log/nginx/paste.eatabrick.org.error.log;
 
-  root /var/sites/paste.eatabrick.org/public;
+  root /srv/http/paste.eatabrick.org/public;
   location / {
     try_files $uri @proxy;
     expires max;
@@ -15,7 +15,7 @@ server {
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_pass http://localhost:8003;
+    proxy_pass http://unix:/var/run/dancer/eab-paste.sock:;
   }
 }
   

@@ -5,7 +5,7 @@ server {
   access_log /var/log/nginx/zomg.runtothecenter.com.access.log;
   error_log /var/log/nginx/zomg.runtothecenter.com.error.log;
 
-  root /var/sites/zomg.runtothecenter.com/www/;
+  root /srv/http/zomg.runtothecenter.com/www/;
 
   index index.html;
 }
