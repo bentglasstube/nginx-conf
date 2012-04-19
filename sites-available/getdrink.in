@@ -1,0 +1,11 @@
+server {
+  listen 80;
+  
+  server_name getdrink.in;
+  access_log /var/log/nginx/getdrink.in.access.log;
+  error_log /var/log/nginx/getdrink.in.error.log;
+
+  root /srv/http/getdrink.in/;
+
+  index index.html;
+}

@@ -8,4 +8,7 @@ server {
   root /srv/http/library.eatabrick.org/;
 
   index index.html;
+
+  rewrite ^(/[a-z_].*)$ /_catalog$1;
+  rewrite ^/$ /_catalog/index.html;
 }
