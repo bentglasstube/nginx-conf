@@ -1,10 +1,10 @@
 server {
   listen 80;
-  server_name dev.getdrink.in;
+  server_name dev.getdrink.in beta.getdrink.in;
   
   error_log /var/log/nginx/dev.getdrink.in.error.log;
 
-  root /srv/http/dev.getdrink.in/public;
+  root /srv/http/dev.getdrink.in/web/public;
   location / {
     try_files $uri @proxy;
     expires max;
