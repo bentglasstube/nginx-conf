@@ -1,11 +1,32 @@
 server {
   listen 80;
-  
   server_name getdrink.in;
-  access_log /var/log/nginx/getdrink.in.access.log;
-  error_log /var/log/nginx/getdrink.in.error.log;
-
-  root /srv/http/getdrink.in/;
-
-  index index.html;
+  rewrite ^ https://$server_name$request_uri? permanent;
 }
+
+server {
+  listen 443;
+  server_name getdrink.in;
+  
+  error_log /var/log/nginx/getdrink.in.error.log;
+  
+  ssl on;
+  ssl_certificate ssl/getdrink.in.crt;
+  ssl_certificate_key ssl/getdrink.in.key;
+  keepalive_timeout 60;
+
+  root /srv/http/getdrink.in/web/public;
+  location / {
+    try_files $uri @proxy;
+    expires max;
+  }
+
+  location @proxy {
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://unix:/var/run/dancer/getdrinkin-dev.sock:;
+  }
+}
+  
