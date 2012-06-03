@@ -1,12 +1,12 @@
 server {
   listen 80;
-  server_name getdrink.in;
-  rewrite ^ https://$server_name$request_uri? permanent;
+  server_name getdrink.in getdrinkin.com getdrinkin.net www.getdrinkin.com www.getdrinkin.net;
+  rewrite ^ https://getdrink.in$request_uri? permanent;
 }
 
 server {
   listen 443;
-  server_name getdrink.in;
+  server_name getdrink.in getdrinkin.com getdrinkin.net www.getdrinkin.com www.getdrinkin.net;
   
   error_log /var/log/nginx/getdrink.in.error.log;
   
@@ -15,7 +15,7 @@ server {
   ssl_certificate_key ssl/getdrink.in.key;
   keepalive_timeout 60;
 
-  root /srv/http/getdrink.in/web/public;
+  root /srv/http/getdrink.in/public;
   location / {
     try_files $uri @proxy;
     expires max;
