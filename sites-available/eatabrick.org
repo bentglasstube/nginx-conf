@@ -1,7 +1,7 @@
 server {
   listen 80 default;
 
-  server_name eatabrick.org www.eatabrick.org;
+  server_name eatabrick.org;
   access_log /var/log/nginx/eatabrick.org.access.log;
   error_log /var/log/nginx/eatabrick.org.error.log;
   
@@ -10,4 +10,10 @@ server {
   index index.html;
   
   error_page 404 /404.html;
+}
+
+server {
+  listen 80;
+  server_name www.eatabrick.org;
+  rewrite ^/(.*) http://eatabrick.org/$1 permanent;
 }
