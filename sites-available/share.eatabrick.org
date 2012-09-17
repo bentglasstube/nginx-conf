@@ -8,6 +8,6 @@ server {
   root /srv/http/share.eatabrick.org/files/;
 
   location / {
-    autoindex on;
+    autoindex off;
   }
 }
