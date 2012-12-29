@@ -1,7 +1,7 @@
 server {
   listen 80;
 
-  server_name martiandalan.com www.martiandalan.com;
+  server_name alanandmarti.com www.alanandmarti.com martiandalan.com www.martiandalan.com;
   access_log /var/log/nginx/martiandalan.com.access.log;
   error_log /var/log/nginx/martiandalan.com.error.log;
 
