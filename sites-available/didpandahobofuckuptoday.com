@@ -15,7 +15,7 @@ server {
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_pass http://localhost:10001;
+    proxy_pass http://unix:/var/run/dancer/panda.sock:;
   }
 }
   
