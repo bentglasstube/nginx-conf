@@ -10,6 +10,9 @@ server {
     expires max;
   }
 
+  error_page 404              /404.html;
+  error_page 500 502 503 504  /5xx.html;
+
   location @proxy {
     proxy_set_header Host $http_host;
     proxy_set_header X-Forwarded-Host $host;
