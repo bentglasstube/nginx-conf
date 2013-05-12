@@ -1,10 +1,16 @@
 server {
   listen 80;
   server_name nbg.eatabrick.org;
-  
-  error_log /var/log/nginx/nbg.eatabrick.org.error.log;
+  return 301 $scheme://greentheresearchers.com$request_uri;
+}
 
-  root /srv/http/nbg.eatabrick.org/public;
+server {
+  listen 80;
+  server_name greentheresearchers.com www.greentheresearchers.com;
+
+  error_log /var/log/nginx/greentheresearchers.com.error.log;
+
+  root /srv/http/greentheresearchers.com/public;
 
   location / {
     try_files $uri @proxy;
@@ -14,13 +20,6 @@ server {
   error_page 404                    /404.html;
   error_page 500 502 503 504  =503  /503.html;
 
-  location /_hippie/ws {
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_pass http://unix:/var/run/dancer/nowburngettig.sock:;
-  }
-
   location @proxy {
     proxy_set_header Host $http_host;
     proxy_set_header X-Forwarded-Host $host;
@@ -29,4 +28,3 @@ server {
     proxy_pass http://unix:/var/run/dancer/nowburngettig.sock:;
   }
 }
-  
