@@ -1,0 +1,9 @@
+server {
+  listen 80 default;
+
+  server_name git.eatabrick.org;
+
+  root /srv/git/http;
+  index index.html;
+  error_page 404 /404.html;
+}
