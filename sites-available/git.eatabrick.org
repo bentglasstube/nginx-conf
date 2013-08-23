@@ -3,7 +3,7 @@ server {
 
   server_name git.eatabrick.org;
 
-  root /srv/git/http;
+  root /srv/http/git.eatabrick.org;
   index index.html;
   error_page 404 /404.html;
 }
