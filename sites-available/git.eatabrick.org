@@ -5,5 +5,5 @@ server {
 
   root /srv/http/git.eatabrick.org;
   index index.html;
-  error_page 404 /404.html;
+  error_page 404 /index.html;
 }
