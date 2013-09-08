@@ -1,0 +1,9 @@
+server {
+  listen 80;
+
+  server_name gfk.eatabrick.org;
+
+  root /srv/http/sw.eatabrick.org;
+  index index.html;
+  error_page 404 /index.html;
+}
