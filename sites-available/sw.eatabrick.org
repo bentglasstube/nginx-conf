@@ -3,6 +3,7 @@ server {
 
   server_name gfk.eatabrick.org;
   server_name vecna.eatabrick.org;
+  server_name dcal.eatabrick.org;
 
   root /srv/http/sw.eatabrick.org;
   index index.html;
