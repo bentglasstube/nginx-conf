@@ -1,19 +1,28 @@
 server {
   listen 80 default;
-
-  server_name eatabrick.org;
-  access_log /var/log/nginx/eatabrick.org.access.log;
-  error_log /var/log/nginx/eatabrick.org.error.log;
-  
-  root /srv/http/eatabrick.org/htdocs/;
-  
-  index index.html;
-  
-  error_page 404 /404.html;
+  server_name eatabrick.org www.eatabrick.org;
+  rewrite ^/(.*) https://eatabrick.org/$1 permanent;
 }
 
 server {
-  listen 80;
+  listen 443 ssl;
   server_name www.eatabrick.org;
-  rewrite ^/(.*) http://eatabrick.org/$1 permanent;
+  ssl_certificate /etc/nginx/ssl/eatabrick.org.pem;
+  ssl_certificate_key /etc/nginx/ssl/eatabrick.org.key;
+  rewrite ^/(.*) https://eatabrick.org/$1 permanent;
+}
+
+server {
+  listen 443 ssl;
+  server_name eatabrick.org;
+
+  ssl_certificate /etc/nginx/ssl/eatabrick.org.pem;
+  ssl_certificate_key /etc/nginx/ssl/eatabrick.org.key;
+
+  access_log /var/log/nginx/eatabrick.org.access.log;
+  error_log /var/log/nginx/eatabrick.org.error.log;
+
+  root /srv/http/eatabrick.org/htdocs/;
+  index index.html;
+  error_page 404 /404.html;
 }
