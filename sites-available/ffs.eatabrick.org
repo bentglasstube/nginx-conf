@@ -1,0 +1,20 @@
+server {
+  listen 80;
+  server_name ffs.eatabrick.org;
+
+  error_log /var/log/nginx/ffs.eatabrick.org.error.log;
+
+  root /srv/http/ffs.eatabrick.org/public;
+  location / {
+    try_files $uri @proxy;
+    expires max;
+  }
+
+  location @proxy {
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Forwarded-Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://unix:/var/run/dancer/ffs.sock:;
+  }
+}
