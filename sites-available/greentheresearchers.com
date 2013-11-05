@@ -1,11 +1,15 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name nbg.eatabrick.org;
   return 301 $scheme://greentheresearchers.com$request_uri;
 }
 
 server {
   listen 80;
+  listen [::]:80;
+
   server_name greentheresearchers.com www.greentheresearchers.com;
 
   error_log /var/log/nginx/greentheresearchers.com.error.log;

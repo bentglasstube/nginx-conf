@@ -1,7 +1,8 @@
 server {
   listen 80;
+  listen [::]:80;
   server_name eab.so;
-  
+
   error_log /var/log/nginx/eab.so.error.log;
 
   root /srv/http/eab.so/public;
@@ -18,4 +19,3 @@ server {
     proxy_pass http://unix:/var/run/dancer/eab-shorten.sock:;
   }
 }
-  

@@ -1,7 +1,9 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name paste.eatabrick.org;
-  
+
   error_log /var/log/nginx/paste.eatabrick.org.error.log;
 
   root /srv/http/paste.eatabrick.org/public;
@@ -18,4 +20,4 @@ server {
     proxy_pass http://unix:/var/run/dancer/eab-paste.sock:;
   }
 }
-  
+

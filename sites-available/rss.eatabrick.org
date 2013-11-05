@@ -1,7 +1,9 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name rss.eatabrick.org;
-  
+
   error_log /var/log/nginx/rss.eatabrick.org.error.log;
 
   root /srv/http/rss.eatabrick.org/public;
@@ -21,4 +23,3 @@ server {
     proxy_pass http://unix:/var/run/dancer/eab-rss.sock:;
   }
 }
-  

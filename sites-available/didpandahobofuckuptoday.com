@@ -1,7 +1,9 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name didpandahobofuckuptoday.com www.didpandahobofuckuptoday.com;
-  
+
   error_log /var/log/nginx/didpandahobofuckuptoday.com.error.log;
 
   root /srv/http/didpandahobofuckuptoday.com;
@@ -18,4 +20,3 @@ server {
     proxy_pass http://unix:/var/run/dancer/panda.sock:;
   }
 }
-  

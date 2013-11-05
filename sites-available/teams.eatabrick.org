@@ -1,7 +1,9 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name teams.eatabrick.org;
-  
+
   error_log /var/log/nginx/teams.eatabrick.org.error.log;
 
   root /srv/http/teams.eatabrick.org/public;
@@ -18,4 +20,3 @@ server {
     proxy_pass http://unix:/var/run/dancer/eab-teams.sock:;
   }
 }
-  

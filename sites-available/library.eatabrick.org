@@ -1,6 +1,7 @@
 server {
   listen 80;
-  
+  listen [::]:80;
+
   server_name library.eatabrick.org;
   access_log /var/log/nginx/library.eatabrick.org.access.log;
   error_log /var/log/nginx/library.eatabrick.org.error.log;

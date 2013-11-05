@@ -1,7 +1,9 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name irc.eatabrick.org evidence.eatabrick.org;
-  
+
   error_log /var/log/nginx/irc.eatabrick.org.error.log;
 
   root /srv/http/irc.eatabrick.org/public;
@@ -18,4 +20,3 @@ server {
     proxy_pass http://unix:/var/run/dancer/eab-irc.sock:;
   }
 }
-  

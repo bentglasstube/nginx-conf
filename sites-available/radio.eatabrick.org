@@ -1,7 +1,9 @@
 server {
   listen 80;
+  listen [::]:80;
+
   server_name radio.eatabrick.org;
-  
+
   error_log /var/log/nginx/radio.eatabrick.org.error.log;
 
   root /srv/http/radio.eatabrick.org/public;
@@ -18,4 +20,3 @@ server {
     proxy_pass http://localhost:8004;
   }
 }
-  

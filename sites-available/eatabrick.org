@@ -1,11 +1,15 @@
 server {
   listen 80 default;
+  listen [::]:80 default;
+
   server_name eatabrick.org www.eatabrick.org;
   rewrite ^/(.*) https://eatabrick.org/$1 permanent;
 }
 
 server {
   listen 443 ssl;
+  listen [::]:443 ssl;
+
   server_name www.eatabrick.org;
   ssl_certificate /etc/nginx/ssl/eatabrick.org.pem;
   ssl_certificate_key /etc/nginx/ssl/eatabrick.org.key;
@@ -14,6 +18,8 @@ server {
 
 server {
   listen 443 ssl;
+  listen [::]:443 ssl;
+
   server_name eatabrick.org;
 
   ssl_certificate /etc/nginx/ssl/eatabrick.org.pem;

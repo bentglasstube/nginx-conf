@@ -1,6 +1,7 @@
 server {
   listen 80;
-  
+  listen [::]:80;
+
   server_name notedoge.com www.notedoge.com;
   access_log /var/log/nginx/notedoge.com.access.log;
   error_log /var/log/nginx/notedoge.com.error.log;
@@ -15,7 +16,7 @@ server {
       break;
     }
   }
-  
+
   location /trivia/app/webroot {
     if (!-e $request_filename) {
       rewrite ^/trivia/app/webroot/(.+)$ /trivia/app/webroot/index.php?url=$1 last;
