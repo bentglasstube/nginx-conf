@@ -6,10 +6,15 @@ server {
   access_log /var/log/nginx/library.eatabrick.org.access.log;
   error_log /var/log/nginx/library.eatabrick.org.error.log;
 
-  root /srv/http/library.eatabrick.org/;
-
   index index.html;
 
   rewrite ^(/[a-z_].*)$ /_catalog$1;
   rewrite ^/$ /_catalog/index.html;
+
+  location / {
+    root /srv/http/library.eatabrick.org/;
+
+    auth_basic 'Eat a Brick Library';
+    auth_basic_user_file /srv/http/library.eatabrick.org/htpasswd;
+  }
 }
