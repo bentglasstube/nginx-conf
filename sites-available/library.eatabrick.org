@@ -17,4 +17,8 @@ server {
     auth_basic 'Eat a Brick Library';
     auth_basic_user_file /srv/http/library.eatabrick.org/htpasswd;
   }
+
+  location /_catalog/robots.txt {
+    auth_basic 'off';
+  }
 }
