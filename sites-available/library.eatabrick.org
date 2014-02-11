@@ -17,4 +17,6 @@ server {
     auth_basic 'Eat a Brick Library';
     auth_basic_user_file /srv/http/library.eatabrick.org/htpasswd;
   }
+
+  error_page 401 403 404 /~fuckoff.html;
 }
