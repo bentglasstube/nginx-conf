@@ -11,14 +11,24 @@ server {
   listen [::]:443 ssl;
 
   server_name www.eatabrick.org;
+
   ssl_certificate /etc/nginx/ssl/eatabrick.org.pem;
   ssl_certificate_key /etc/nginx/ssl/eatabrick.org.key;
+
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_prefer_server_ciphers on;
+  ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-RC4-SHA:ECDHE-RSA-AES128-SHA:AES128-GCM-SHA256:RC4:HIGH:!MD5:!aNULL:!EDH:!CAMELLIA;
+  ssl_session_cache shared:SSL:10m;
+
+  add_header Strict-Transport-Security max-age=31536000;
+  add_header X-Frame-Options DENY;
+
   rewrite ^/(.*) https://eatabrick.org/$1 permanent;
 }
 
 server {
-  listen 443 ssl;
-  listen [::]:443 ssl;
+  listen 443 ssl default;
+  listen [::]:443 ssl default;
 
   server_name eatabrick.org;
 
