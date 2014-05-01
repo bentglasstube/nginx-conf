@@ -48,6 +48,7 @@ server {
 
   add_header Strict-Transport-Security max-age=31536000;
   add_header X-Frame-Options DENY;
+  add_header Heartbleed "REPLACED: 2014-04-17; see http://heartbleedheader.com";
 
   access_log /var/log/nginx/eatabrick.org.access.log;
   error_log /var/log/nginx/eatabrick.org.error.log;
